@@ -6,13 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
-
-permissions:
-  contents: read
-  security-events: write
-
 jobs:
   analyze:
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
