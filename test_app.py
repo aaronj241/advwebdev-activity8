@@ -25,10 +25,8 @@ def test_update():
     assert response.get_json() == {"updated": payload}
 
 
-
 def test_delete():
     client = app.app.test_client()
     response = client.delete('/delete/42')
     assert response.status_code == 200
     assert response.get_json() == {"deleted": "42"}
-
