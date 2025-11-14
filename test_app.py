@@ -15,3 +15,20 @@ def test_echo():
     response = client.post('/echo', json=payload)
     assert response.status_code == 201
     assert response.get_json() == payload
+
+
+def test_update():
+    client = app.app.test_client()
+    payload = {"value": 123}
+    response = client.put('/update', json=payload)
+    assert response.status_code == 200
+    assert response.get_json() == {"updated": payload}
+
+
+
+def test_delete():
+    client = app.app.test_client()
+    response = client.delete('/delete/42')
+    assert response.status_code == 200
+    assert response.get_json() == {"deleted": "42"}
+
